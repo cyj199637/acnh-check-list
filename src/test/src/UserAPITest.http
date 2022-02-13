@@ -1,0 +1,21 @@
+POST http://127.0.0.1:8080/users
+Content-Type: application/json
+
+{
+  "name": "Banessa",
+  "hemisphere": "NORTHERN"
+}
+
+###
+GET http://127.0.0.1:8080/users/1
+
+###
+PATCH http://127.0.0.1:8080/users/1
+Content-Type: application/json
+
+{
+  "hemisphere": "SOUTHERN"
+}
+
+###
+DELETE http://127.0.0.1:8080/users/1
