@@ -1,16 +1,16 @@
 package com.nook.plugin
 
-import com.nook.route.userRouting
+import com.nook.route.user.*
 import io.ktor.routing.*
 import io.ktor.application.*
-import io.ktor.response.*
 
 fun Application.configureRouting() {
-
     routing {
-        get("/") {
-            call.respondText("Hello World!")
+        route("/users") {
+            createUser()
+            findUser()
+            updateUser()
+            deleteUser()
         }
-        userRouting()
     }
 }

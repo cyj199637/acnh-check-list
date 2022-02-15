@@ -1,4 +1,4 @@
-package com.nook.model
+package com.nook.route.user.dto
 
 import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.ResultRow

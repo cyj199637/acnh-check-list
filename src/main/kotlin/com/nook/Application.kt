@@ -3,6 +3,7 @@ package com.nook
 import com.nook.database.DatabaseInitializer
 import io.ktor.application.*
 import com.nook.plugin.*
+import io.ktor.config.*
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.netty.EngineMain.main(args)
@@ -13,5 +14,13 @@ fun Application.module() {
     configureSerialization()
     configureMonitoring()
 
-    DatabaseInitializer.init(this.environment.config)
+    DatabaseInitializer.init(profileConfiguration(environment))
+}
+
+private fun profileConfiguration(environment: ApplicationEnvironment): ApplicationConfig {
+    val env = environment.config.property("ktor.environment").getString()
+    return when (env) {
+        "development" -> environment.config.config("development")
+        else -> environment.config.config("local")
+    }
 }
